@@ -9,18 +9,18 @@ abstract class Api
     public $requestUri = [];
     public $requestParams = [];
 
-    protected $action = ''; // §¢ ­¨¥ ¬¥â®¤ ¤«ï ¢ë¯®«­¥­¨ï
+    protected $action = ''; //ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð¼ÐµÑ‚Ð¾Ð´ Ð´Ð»Ñ Ð²Ñ‹Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ñ
 
     public function __construct() {
         header("Access-Control-Allow-Orgin: *");
         header("Access-Control-Allow-Methods: *");
         header("Content-Type: application/json");
 
-        //Œ áá¨¢ GET ¯ à ¬¥âà®¢ à §¤¥«¥­­ëå á«¥è¥¬
+        //ÐœÐ°ÑÑÐ¸Ð² GET Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð¾Ð² Ñ€Ð°Ð·Ð´ÐµÐ»ÐµÐ½Ð½Ñ‹Ñ… ÑÐ»ÐµÑˆÐµÐ¼
         $this->requestUri = explode('/', trim($_SERVER['REQUEST_URI'],'/'));
         $this->requestParams = $_REQUEST;
 
-        //Ž¯à¥¤¥«¥­¨¥ ¬¥â®¤  § ¯à®á 
+        //ÐžÐ¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð¸Ðµ Ð¼ÐµÑ‚Ð¾Ð´Ð° Ð·Ð°Ð¿Ñ€Ð¾ÑÐ°
         $this->method = $_SERVER['REQUEST_METHOD'];
         if ($this->method == 'POST' && array_key_exists('HTTP_X_HTTP_METHOD', $_SERVER)) {
             if ($_SERVER['HTTP_X_HTTP_METHOD'] == 'DELETE') {
@@ -34,14 +34,14 @@ abstract class Api
     }
 
     public function run() {
-        //¥à¢ë¥ 2 í«¥¬¥­â  ¬ áá¨¢  URI ¤®«¦­ë ¡ëâì "api" ¨ ­ §¢ ­¨¥ â ¡«¨æë
+        //ÐŸÐµÑ€Ð²Ñ‹Ðµ 2 ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð° Ð¼Ð°ÑÑÐ¸Ð²Ð° URI Ð´Ð¾Ð»Ð¶Ð½Ñ‹ Ð±Ñ‹Ñ‚ÑŒ "api" Ð¸ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ñ‹
         if(array_shift($this->requestUri) !== 'api' || array_shift($this->requestUri) !== $this->apiName){
             throw new RuntimeException('API Not Found', 404);
         }
-        //Ž¯à¥¤¥«¥­¨¥ ¤¥©áâ¢¨ï ¤«ï ®¡à ¡®âª¨
+        //ÐžÐ¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð¸Ðµ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ Ð´Ð»Ñ Ð¾Ð±Ñ€Ð°Ð±Ð¾Ñ‚ÐºÐ¸
         $this->action = $this->getAction();
 
-        //…á«¨ ¬¥â®¤(¤¥©áâ¢¨¥) ®¯à¥¤¥«¥­ ¢ ¤®ç¥à­¥¬ ª« áá¥ API
+        //Ð•ÑÐ»Ð¸ Ð¼ÐµÑ‚Ð¾Ð´(Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ðµ) Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½ Ð² Ð´Ð¾Ñ‡ÐµÑ€Ð½ÐµÐ¼ ÐºÐ»Ð°ÑÑÐµ API
         if (method_exists($this, $this->action)) {
             return $this->{$this->action}();
         } else {

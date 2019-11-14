@@ -6,8 +6,8 @@ class UsersApi extends Api
     public $apiName = 'users';
 
     /**
-     * å•‚Æ§ GET
-     * ÇÎ¢Æ§ ·Ø®·™† ¢·•Â ß†Ø®·•©
+     * –ú–µ—Ç–æ–¥ GET
+     * –í—ã–≤–æ–¥ —Å–ø–∏—Å–∫–∞ –≤—Å–µ—Ö –∑–∞–ø–∏—Å–µ–π
      * http://yor_domain/users
      * @return string
      */
@@ -22,14 +22,14 @@ class UsersApi extends Api
     }
 
     /**
-     * å•‚Æ§ GET
-     * è‡Æ·¨Æ‚‡ Æ‚§•´Ï≠Æ© ß†Ø®·® (ØÆ id)
+     * –ú–µ—Ç–æ–¥ GET
+     * –ü—Ä–æ—Å–º–æ—Ç—Ä –æ—Ç–¥–µ–ª—å–Ω–æ–π –∑–∞–ø–∏—Å–∏ (–ø–æ id)
      * http://yor_domain/users/1
      * @return string
      */
     public function viewAction()
     {
-		//id §Æ´¶•≠ °Î‚Ï Ø•‡¢Î¨ Ø†‡†¨•‚‡Æ¨ ØÆ·´• /users/x
+		//id –¥–æ–ª–∂–µ–Ω –±—ã—Ç—å –ø–µ—Ä–≤—ã–º –ø–∞—Ä–∞–º–µ—Ç—Ä–æ–º –ø–æ—Å–ª–µ /users/x
         $id = array_shift($this->requestUri);
 		$list = array('record'=>'you see record = '.$id);
         return $this->response($list, 200);
@@ -37,9 +37,9 @@ class UsersApi extends Api
     }
 
     /**
-     * å•‚Æ§ POST
-     * ëÆß§†≠®• ≠Æ¢Æ© ß†Ø®·®
-     * http://ÑéåÖç/users + Ø†‡†¨•‚‡Î ß†Ø‡Æ·† name, email
+     * –ú–µ—Ç–æ–¥ POST
+     * –°–æ–∑–¥–∞–Ω–∏–µ –Ω–æ–≤–æ–π –∑–∞–ø–∏—Å–∏
+     * http://–î–û–ú–ï–ù/users + –ø–∞—Ä–∞–º–µ—Ç—Ä—ã –∑–∞–ø—Ä–æ—Å–∞ name, email
      * @return string
      */
     public function createAction()
@@ -52,9 +52,9 @@ class UsersApi extends Api
     }
 
     /**
-     * å•‚Æ§ PUT
-     * é°≠Æ¢´•≠®• Æ‚§•´Ï≠Æ© ß†Ø®·® (ØÆ •• id)
-     * http://ÑéåÖç/users/1 + Ø†‡†¨•‚‡Î ß†Ø‡Æ·† name, email
+     * –ú–µ—Ç–æ–¥ PUT
+     * –û–±–Ω–æ–≤–ª–µ–Ω–∏–µ –æ—Ç–¥–µ–ª—å–Ω–æ–π –∑–∞–ø–∏—Å–∏ (–ø–æ –µ–µ id)
+     * http://–î–û–ú–ï–ù/users/1 + –ø–∞—Ä–∞–º–µ—Ç—Ä—ã –∑–∞–ø—Ä–æ—Å–∞ name, email
      * @return string
      */
     public function updateAction()
@@ -65,9 +65,9 @@ class UsersApi extends Api
     }
 
     /**
-     * å•‚Æ§ DELETE
-     * ì§†´•≠®• Æ‚§•´Ï≠Æ© ß†Ø®·® (ØÆ •• id)
-     * http://ÑéåÖç/users/1
+     * –ú–µ—Ç–æ–¥ DELETE
+     * –£–¥–∞–ª–µ–Ω–∏–µ –æ—Ç–¥–µ–ª—å–Ω–æ–π –∑–∞–ø–∏—Å–∏ (–ø–æ –µ–µ id)
+     * http://–î–û–ú–ï–ù/users/1
      * @return string
      */
     public function deleteAction()
